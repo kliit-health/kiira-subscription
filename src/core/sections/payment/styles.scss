@@ -1,0 +1,55 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+
+  &__container {
+    margin: 80px 40px 0px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    @include user-select-none;
+    font-family: $header-font;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: white;
+    margin: 0px 0px 10px;
+  }
+
+  &__details {
+    margin-bottom: 40px;
+  }
+
+  &__error {
+    @include user-select-none;
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: .7em;
+    padding: 5px 0;
+    color: darken($base-pink, 10%);
+  }
+
+  &__stripe-element {
+    background-color: white;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: 'Roboto';
+  }
+
+  &__submit-button {
+    position: absolute;
+    z-index: 100;
+    margin: 40px;
+    bottom: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,19 @@
+@import 'src/styles/variables';
+
+b {
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
+  background-color: lighten($base-gray, 35%);
+  font-family: Montserrat, sans-serif;
+  color: #000;
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+html {
+  font-size: 15px;
+}

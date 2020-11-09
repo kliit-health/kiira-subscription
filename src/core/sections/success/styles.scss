@@ -1,0 +1,38 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.success {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    @include user-select-none;
+    align-self: flex-start;
+    font-family: $paragraph-font;
+    font-weight: 400;
+    margin: 10px;
+    padding: 0px;
+    text-align: center;
+    color: $base-white;
+    line-height: normal;
+    font-size: 1.1em;
+  }
+
+  &__kiira {
+    margin: 10px;
+    width: 200px;
+    height: auto;
+  }
+}

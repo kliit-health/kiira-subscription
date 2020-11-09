@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.divider {
+  display: flex;
+  width: 30%;
+  height: 1px;
+  background-color: white;
+  padding: 0 40px;
+
+  &--gradient {
+    @include gradient-background;
+  }
+
+  &--bold {
+    height: 2px;
+  }
+}

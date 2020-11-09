@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.stepper {
+  @include user-select-none;
+  position: absolute;
+  z-index: 1000;
+  margin: 40px;
+  top: 0;
+  right: 0;
+
+  &__text {
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 1em;
+    line-height: normal;
+  }
+
+  &--hidden {
+    opacity: 0;
+  }
+}

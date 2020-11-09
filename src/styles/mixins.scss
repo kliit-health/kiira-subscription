@@ -1,0 +1,31 @@
+@mixin hide-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0 !important
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@mixin gradient-background {
+  background: rgb(131, 89, 255);
+  background: linear-gradient(90deg, rgba(131, 89, 255, 1) 0%, rgba(0, 137, 255, 1) 40%, rgba(0, 137, 255, 1) 60%, rgba(131, 89, 255, 1) 96%);
+}
+
+@mixin user-select-none {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+@mixin pointer-on-hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin hide-backface-visibility {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}

@@ -1,0 +1,80 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: $base-blue;
+  transition: opacity 0.2s ease-in-out;
+  outline: none;
+  font-family: 'Roboto-Regular';
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: 0;
+  min-width: 100px;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  &__text {
+    color: white;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif !important;
+    line-height: normal;
+  }
+
+  &--outlined {
+    border: 1px solid $base-blue;
+    background-color: transparent;
+
+    .button__container {
+      color: $base-blue;
+    }
+  }
+
+  &--underlined {
+    text-decoration: underline;
+    text-decoration-color: $base-blue;
+  }
+
+  &--link {
+    padding: 0;
+    background-color: transparent;
+    min-width: 0px;
+    color: $base-blue;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+
+  &--hidden {
+    display: none;
+    pointer-events: none;
+  }
+
+  &--loading {
+    opacity: 0.5;
+
+    .button__text {
+      margin-left: 10px;
+    }
+  }
+}

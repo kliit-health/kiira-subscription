@@ -1,0 +1,47 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.core {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+
+  @media screen and (min-width: $medium) {
+    height: 1000px;
+  }
+
+  &__oval {
+    position: absolute;
+    height: 1000px;
+    align-self: center;
+    max-width: none !important;
+
+    @media screen and (max-width: $medium) {
+      display: none;
+      height: 0px;
+    }
+  }
+
+  &__container {
+    background-color: lighten($base-pink, 8%);
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    max-width: 640px;
+    min-width: 320px;
+    min-height: 700px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: auto;
+  }
+
+  &__button-back {
+    position: absolute;
+    z-index: 100;
+    margin: 40px;
+    top: 0;
+    left: 0;
+  }
+}

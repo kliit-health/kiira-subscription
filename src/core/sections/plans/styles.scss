@@ -1,0 +1,57 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+
+  &__container {
+    display: flex;
+    flex: 1;
+    margin: 80px 0px 40px;
+    position: relative;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include user-select-none;
+    display: flex;
+    font-family: $header-font;
+    font-size: 2.4em;
+    font-weight: 600;
+    align-self: flex-start;
+    margin-left: 40px;
+    margin-bottom: 0;
+    line-height: normal;
+    color: white;
+    flex-wrap: wrap;
+  }
+
+  &__submit-button {
+    position: absolute;
+    z-index: 100;
+    margin: 40px;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.coverflow__container__1P-xE {
+  background: none;
+}
+
+.coverflow__figure__3bk_C {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: none;
+  backface-visibility: visible;
+  -webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(255, 158, 158, 0.1), rgba(250, 134, 134, 0.1) 20%, rgba(0, 0, 0, 0) 30%, rgba(223, 139, 139, 0))
+}
+
+.coverflow__stage__14oqC {
+  position: relative;
+  height: 90%;
+  width: 100%;
+}
