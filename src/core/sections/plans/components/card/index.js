@@ -4,7 +4,7 @@ import { Card as CardBase } from 'src/components'
 import './styles.scss'
 
 const Card = props => {
-	const { onClick, description, title, price, active } = props
+	const { onClick, description, title, price, active, mobile } = props
 	const handleClick = () => {
 		if (onClick) {
 			onClick(props)
@@ -12,7 +12,8 @@ const Card = props => {
 	}
 
 	const modifiers = {
-		'plan-card--active': active
+		'plan-card--active': active & mobile,
+		'plan-card--mobile': mobile
 	}
 
 	const styles = {

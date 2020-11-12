@@ -9,8 +9,7 @@
 
   &__container {
     display: flex;
-    flex: 1;
-    margin: 80px 0px 40px;
+    margin-top: 80px;
     position: relative;
     flex-direction: column;
   }
@@ -36,6 +35,28 @@
     bottom: 0;
     right: 0;
   }
+
+  &__mobile {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 40px 0px 40px;
+  }
+
+  &__error {
+    @include user-select-none;
+    z-index: 100;
+    margin: 0px 40px 90px 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    font-family: 'Roboto';
+    color: transparent
+  }
+
+  &--error {
+    color: darken($base-pink, 10%);
+  }
 }
 
 .coverflow__container__1P-xE {
@@ -47,7 +68,7 @@
   overflow: hidden;
   box-shadow: none;
   backface-visibility: visible;
-  -webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(255, 158, 158, 0.1), rgba(250, 134, 134, 0.1) 20%, rgba(0, 0, 0, 0) 30%, rgba(223, 139, 139, 0))
+  -webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(255, 158, 158, 0.1), rgba(250, 134, 134, 0.1) 10%, rgba(0, 0, 0, 0) 20%, rgba(223, 139, 139, 0))
 }
 
 .coverflow__stage__14oqC {

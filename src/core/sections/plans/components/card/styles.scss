@@ -36,4 +36,15 @@
     text-align: center;
     line-height: normal;
   }
+
+  &--mobile {
+    max-height: 180px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  &--active {
+    outline: solid $base-blue 2px;
+    border-radius: 0px;
+  }
 }

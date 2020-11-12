@@ -32,5 +32,7 @@ export default {
 	validating: 'Validating',
 	internalError: 'An internal error has occured, please try again later.',
 	thankYou:
-		'thank you for being a Kiira customer. You will shortly receive an email. Follow the instructions and get in touch with an expert!'
+		'thank you for being a Kiira customer. You will shortly receive an email. Follow the instructions and get in touch with an expert!',
+	planNotAvaiable:
+		'The selected plan is not avaiable in your state at this time.'
 }
