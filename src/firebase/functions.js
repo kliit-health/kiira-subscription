@@ -57,15 +57,13 @@ export const verifyEmailAddress = email =>
 		})()
 	)
 
-export const createSubscriptionApplication = details =>
+export const createCustomer = details =>
 	new Promise((resolve, reject) =>
 		(async function () {
-			const createSubscriptionApplication = functions.httpsCallable(
-				'createSubscriptionApplication'
-			)
+			const createCustomer = functions.httpsCallable('createCustomer')
 			try {
-				const application = await createSubscriptionApplication(details)
-				resolve(application.data)
+				const customer = await createCustomer(details)
+				resolve(customer.data)
 			} catch (error) {
 				reject(error.details)
 			}

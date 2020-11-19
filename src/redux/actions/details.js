@@ -6,10 +6,7 @@ import {
 } from 'src/redux/types'
 import intl from 'src/i18n'
 import { code } from 'src/helpers/contants'
-import {
-	verifyEmailAddress,
-	createSubscriptionApplication
-} from 'src/firebase/functions'
+import { verifyEmailAddress, createCustomer } from 'src/firebase/functions'
 
 export const setDetails = ({ email, id, ...rest }) => async dispatch => {
 	try {
@@ -25,14 +22,12 @@ export const setDetails = ({ email, id, ...rest }) => async dispatch => {
 			if (emailValidation.errorInfo.code === code.userNotFound) {
 				dispatch({
 					type: SET_DETAILS,
-					payload: createSubscriptionApplication({ email, ...rest }).then(
-						response => {
-							dispatch({
-								type: SET_NEXT_PAGE
-							})
-							return response
-						}
-					)
+					payload: createCustomer({ email, ...rest }).then(response => {
+						dispatch({
+							type: SET_NEXT_PAGE
+						})
+						return response
+					})
 				})
 			}
 		} else if (hasUser) {

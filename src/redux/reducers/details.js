@@ -16,9 +16,7 @@ const initialState = {
 		address: {
 			postalCode: ''
 		},
-		subscription: {
-			customerId: ''
-		}
+		id: ''
 	},
 	error: null,
 	loading: false
