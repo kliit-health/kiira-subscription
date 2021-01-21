@@ -18,7 +18,7 @@ firebase.apps.length
 	? firebase.app().firestore()
 	: firebase.initializeApp(config)
 
-// firebase.functions().useFunctionsEmulator('http://localhost:5001')
+firebase.functions().useFunctionsEmulator('http://localhost:5001')
 
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()

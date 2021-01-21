@@ -22,8 +22,8 @@ export default createReducer(initialState, {
 	[SUBMIT_PAYMENT_PENDING]: () => {
 		return { ...initialState, loading: true }
 	},
-	[SUBMIT_PAYMENT_REJECTED]: (_, { payload }) => {
-		return { ...initialState, error: payload }
+	[SUBMIT_PAYMENT_REJECTED]: (state, { payload }) => {
+		return { ...initialState, error: { ...state.error, ...payload } }
 	},
 	[SUBMIT_PAYMENT_FULFILLED]: (_, { payload }) => {
 		return { ...initialState, details: payload }

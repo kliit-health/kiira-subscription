@@ -53,7 +53,7 @@ const Plans = ({ setNextPage, setPlan, plans, plan, state }) => {
 		<div className={styles.root}>
 			{plans.length > 0 && (
 				<div className={styles.container}>
-					<h1 className={styles.title}>{intl.simplePlan}</h1>
+					<h1 className={styles.title}>{intl.selectPlan}</h1>
 					<div style={{ width: mobile ? 0 : 640, height: mobile ? 0 : 400 }}>
 						<Coverflow
 							height="500"

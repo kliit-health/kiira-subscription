@@ -8,22 +8,6 @@
   align-items: center;
   margin: 0px;
 
-  @media screen and (min-width: $medium) {
-    height: 1000px;
-  }
-
-  &__oval {
-    position: absolute;
-    height: 1000px;
-    align-self: center;
-    max-width: none !important;
-
-    @media screen and (max-width: $medium) {
-      display: none;
-      height: 0px;
-    }
-  }
-
   &__container {
     background-color: lighten($base-pink, 8%);
     flex-direction: column;

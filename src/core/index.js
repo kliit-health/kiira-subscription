@@ -41,7 +41,6 @@ const Core = ({
 
 	return (
 		<div className={styles.root}>
-			<img src={oval} className={styles.oval} />
 			<div className={styles.container}>
 				<Stepper current={index} hidden={index === 4 || loading} />
 				<Button

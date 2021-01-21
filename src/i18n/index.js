@@ -22,7 +22,7 @@ export default {
 	invalidSecurityCode: 'Invalid security code.',
 	securityCodeRequired: 'Security code is required.',
 	submit: 'Submit',
-	simplePlan: 'Simple, Transparent Pricing.',
+	selectPlan: 'Select a plan that works for you',
 	selectedPlan: 'Selected Plan',
 	paymentDetails: 'Payment Details',
 	submitPayment: 'Submit Payment',
