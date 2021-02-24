@@ -21,6 +21,7 @@
 		"axios": "^0.19.2",
 		"card-validator": "^8.1.0",
 		"classnames": "^2.2.6",
+		"deepmerge": "^4.2.2",
 		"firebase": "^7.19.1",
 		"formik": "^2.1.7",
 		"lodash": "^4.17.20",

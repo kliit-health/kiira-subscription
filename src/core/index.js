@@ -6,8 +6,6 @@ import { Button, Stepper } from 'src/components'
 import intl from 'src/i18n'
 import { Details, Plans, Payment, Success } from './sections'
 import { setPreviousPage, getPlans, setPlan } from 'src/redux/actions'
-import oval from 'src/assets/images/oval.svg'
-
 import './styles.scss'
 
 const Core = ({
