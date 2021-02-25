@@ -5,7 +5,7 @@ import model from './model'
 import './styles.scss'
 
 const Card = props => {
-	const { onClick, title, price, active, mobile, benefits } = props
+	const { onClick, title, price, active, mobile, benefits, trial } = props
 
 	const handleClick = () => {
 		if (onClick) {
@@ -26,16 +26,23 @@ const Card = props => {
 		description: 'plan-card__description',
 		item: 'plan-card__item',
 		image: 'plan-card__image',
-		container: 'plan-card__container'
+		container: 'plan-card__container',
+		trial: 'plan-card__trial',
+		priceContainer: 'plan-card__price-container'
 	}
 
 	return (
 		<CardBase classes={styles.card} onClick={handleClick}>
 			<h1 className={styles.title}>{title}</h1>
-			<p className={styles.price}>
-				{`$${price}`}
-				<span className={styles.details}>/mo</span>
-			</p>
+			<div className={styles.priceContainer}>
+				<p className={styles.price}>
+					{`$${price}`}
+					<span className={styles.details}>/mo</span>
+				</p>
+				{trial.days > 0 && (
+					<span className={styles.trial}>{`Free ${trial.days}-Day Trial`}</span>
+				)}
+			</div>
 			<div className={styles.container}>
 				{benefits.map(({ id, description }) => (
 					<div key={id} className={styles.item}>

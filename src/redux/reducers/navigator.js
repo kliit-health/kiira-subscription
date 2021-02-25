@@ -7,7 +7,7 @@ import {
 } from 'src/redux/types'
 
 const initialState = {
-	index: 0,
+	index: 1,
 	loading: false
 }
 

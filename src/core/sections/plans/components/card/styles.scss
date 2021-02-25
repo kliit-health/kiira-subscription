@@ -15,7 +15,8 @@
     font-size: 1.6em;
     color: $base-white;
     margin: 0;
-    margin-top: 30px;
+    margin-top: 10px;
+    padding: 5px;
     line-height: normal;
     background-color: $base-blue;
   }
@@ -27,19 +28,24 @@
     font-size: 2.1em;
     color: $base-blue;
     padding: 0px;
-    line-height: normal;
-    margin: 15px 0px 7px 0px;
+    margin: 0px;
     text-align: center;
+  }
+
+  &__price-container {
+    margin-top: 10px
   }
 
   &__price-details {
     font-size: .5em;
+    margin: 0;
+    padding: 0
   }
 
   &__description {
     @include user-select-none;
     font-family: 'Open Sans';
-    font-size: .7em;
+    font-size: .8em;
     text-align: left;
     color: $base-charcoal;
     margin: 0;
@@ -57,17 +63,26 @@
     flex: 1;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 0px 14px 14px 14px;
+    margin: 0px 14px 0px 14px;
   }
 
   &__image {
+    @include user-select-none;
     height: 25px;
     width: auto;
     margin-right: 10px;
   }
 
+  &__trial {
+    @include user-select-none;
+    font-family: $header-font;
+    font-size: 14px;
+    color: red;
+    font-weight: 600;
+  }
+
   &--mobile {
-    max-height: 180px;
+    max-height: 400px;
     margin-bottom: 20px;
     border-radius: 10px;
   }
@@ -76,4 +91,6 @@
     outline: solid $base-blue 2px;
     border-radius: 0px;
   }
+
+
 }
