@@ -1,6 +1,6 @@
 export { TextInput } from './TextInput'
 export { Button } from './button'
 export { Divider } from './divider'
-export { Card } from './card'
 export { CircularProgress } from './circularProgress'
 export { Stepper } from './stepper'
+export { StripeInput } from './stripeInput'

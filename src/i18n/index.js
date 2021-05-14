@@ -5,6 +5,7 @@ export default {
 	flexiblePlans: 'Flexible monthly plans for your specific care needs.',
 	firstNameRequired: 'First name is required.',
 	lastNameRequired: 'Last name is required.',
+	nameRequired: 'Name is required.',
 	invalidEmailFormat: 'Invalid email address format.',
 	emailRequired: 'Email address is required.',
 	minimumCharacters: 'Minimum two characters required.',
@@ -34,5 +35,16 @@ export default {
 	thankYou:
 		'thank you for being a Kiira customer. You will shortly receive an email. Follow the instructions and get in touch with an expert!',
 	planNotAvaiable:
-		'The selected plan is not avaiable in your state at this time.'
+		'The selected plan is not avaiable in your state at this time.',
+	select: 'Select',
+	membershipStart:
+		'Membership begins on the day of payment and auto-renews each month. Cancel anytime.',
+	monthlyFee: 'Monthly Fee',
+	totalDue: 'Total Due',
+	confirmPay: 'Confirm and Pay',
+	failedPayment: 'Failed to process payment.',
+	somethingWentWrong:
+		'Something went wrong. Please close this window and try again.',
+	completed:
+		'Thanks for joining Kiira! Please check your email for further instructions.'
 }

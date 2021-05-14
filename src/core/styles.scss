@@ -2,31 +2,6 @@
 @import 'src/styles/mixins';
 
 .core {
-  font-size: 14px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-
-  &__container {
-    background-color: lighten($base-pink, 8%);
-    flex-direction: column;
-    position: relative;
-    display: flex;
-    max-width: 670px;
-    min-width: 320px;
-    min-height: 700px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: auto;
-  }
-
-  &__button-back {
-    position: absolute;
-    z-index: 100;
-    margin: 40px;
-    top: 0;
-    left: 0;
-  }
+  max-width: 1240px;
+  min-width: 480px;
 }

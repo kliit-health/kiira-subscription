@@ -14,7 +14,6 @@ module.exports = {
 					plugins: ['@babel/transform-runtime']
 				}
 			},
-			{ test: /\.css$/, loader: 'style-loader!css-loader' },
 			{
 				test: /\.(pdf|jpg|png|gif|svg|ico)$/,
 				use: [
@@ -36,8 +35,22 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.s[ac]ss$/i,
-				use: ['style-loader', 'css-loader', 'sass-loader']
+				test: /\.css$/i,
+				use: ['style-loader', 'css-loader']
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader'
+					},
+					{
+						loader: 'sass-loader'
+					}
+				]
 			}
 		]
 	},

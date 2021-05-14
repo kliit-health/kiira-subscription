@@ -3,76 +3,17 @@
 
 .plans {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  position: relative;
+  justify-content: space-evenly;
+  align-self: center;
 
   &__container {
-    display: flex;
-    margin-top: 80px;
-    position: relative;
-    flex-direction: column;
+    display: 'flex';
+    justify-content: 'center';
+    flex-flow: 'row';
+    align-content: 'center';
+    text-align: 'center';
+    margin-left: 'auto'
   }
 
-  &__title {
-    @include user-select-none;
-    display: flex;
-    font-family: $header-font;
-    font-size: 2.4em;
-    font-weight: 600;
-    align-self: flex-start;
-    margin-left: 40px;
-    margin-bottom: 0;
-    line-height: normal;
-    color: white;
-    flex-wrap: wrap;
-  }
-
-  &__submit-button {
-    position: absolute;
-    z-index: 100;
-    margin: 40px;
-    bottom: 0;
-    right: 0;
-  }
-
-  &__mobile {
-    display: flex;
-    flex-direction: column;
-    margin: 40px 40px 0px 40px;
-  }
-
-  &__error {
-    @include user-select-none;
-    z-index: 100;
-    margin: 10px 0px 0px 40px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: left;
-    font-family: 'Roboto';
-    color: transparent
-  }
-
-  &--error {
-    color: darken($base-pink, 10%);
-  }
-}
-
-.coverflow__container__1P-xE {
-  background: none;
-}
-
-.coverflow__figure__3bk_C {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: none;
-  backface-visibility: visible;
-  -webkit-box-reflect: below 1px -webkit-linear-gradient(bottom, rgba(255, 158, 158, 0.1), rgba(250, 134, 134, 0.1) 10%, rgba(0, 0, 0, 0) 20%, rgba(223, 139, 139, 0))
-}
-
-.coverflow__stage__14oqC {
-  position: relative;
-  height: 90%;
-  width: 100%;
+  &__carousel {}
 }

@@ -1,133 +1,101 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
-import { Button } from 'src/components'
-import {
-	setPaymentRejected,
-	setPaymentPending,
-	setPaymentFulfilled,
-	submitPayment,
-	setNextPage
-} from 'src/redux/actions'
-import { Card } from './components'
+import React, { useContext, useEffect, useState } from 'react'
+import { Modal, Backdrop, Fade, Grid, makeStyles } from '@material-ui/core'
+import { Close } from '@material-ui/icons'
+import { Form, Summary, Error, Completed } from './components'
+import { switchCase } from 'src/helpers/functions'
+import { colors } from 'src/helpers/constants'
+import { useSelector, useDispatch } from 'react-redux'
+import { resetPaymentReducer } from 'src/redux/actions'
+import { CoreContext } from 'src/core'
 import intl from 'src/i18n'
 import './styles.scss'
 
-const Payment = ({
-	setPaymentFulfilled,
-	setPaymentRejected,
-	setPaymentPending,
-	submitPayment,
-	setNextPage,
-	payment,
-	loading,
-	details,
-	error,
-	plan
-}) => {
-	const stripe = useStripe()
-	const elements = useElements()
-
-	useEffect(() => {
-		const { requiresAction, clientSecret, completed } = payment
-
-		if (requiresAction) {
-			async function handleAction() {
-				setPaymentPending()
-				try {
-					const result = await stripe.confirmCardPayment(clientSecret)
-					if (result) {
-						const { error } = result
-						error
-							? setPaymentRejected(error)
-							: setPaymentFulfilled({
-									completed: true,
-									requiresAction: false,
-									clientSecret: ''
-							  })
-					}
-				} catch (error) {
-					setPaymentRejected(error)
-				}
-			}
-			handleAction()
-		} else if (completed) {
-			setNextPage()
+const useStyles = makeStyles(theme => ({
+	container: {
+		[theme.breakpoints.down('sm')]: {
+			flexDirection: 'column-reverse'
 		}
-	}, [payment])
-
-	const handleSubmit = async event => {
-		event.preventDefault()
-
-		try {
-			setPaymentPending()
-			const result = await stripe.createPaymentMethod({
-				type: 'card',
-				card: elements.getElement(CardElement)
-			})
-
-			if (result) {
-				const { error, paymentMethod } = result
-
-				error
-					? setPaymentRejected(result)
-					: submitPayment({ paymentMethod, details, planId: plan.id })
-			}
-		} catch (error) {
-			setPaymentRejected(error)
-		}
+	},
+	modal: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	grid: {
+		[theme.breakpoints.down('sm')]: {
+			marginBottom: theme.spacing(4)
+		},
+		display: 'flex'
 	}
+}))
+
+export const Payment = () => {
+	const { plan, selectPlan } = useContext(CoreContext)
+	const [screen, setScreen] = useState(state.initial)
+	const paymentError = useSelector(state => state.payment.error)
+	const completed = useSelector(state => state.payment.completed)
+	const dispatch = useDispatch()
+	const classes = useStyles()
 
 	const styles = {
-		root: 'payment',
-		form: 'payment__form',
+		title: 'payment__title',
+		modal: 'payment__modal',
 		container: 'payment__container',
-		text: 'payment__text',
-		button: { root: 'payment__submit-button' },
-		details: 'payment__details',
-		error: 'payment__error',
-		element: 'payment__stripe-element'
+		header: 'payment__header'
+	}
+
+	useEffect(() => {
+		setScreen(
+			completed ? state.success : paymentError ? state.error : state.initial
+		)
+	}, [completed, paymentError])
+
+	const handleClose = () => {
+		selectPlan(null)
+		dispatch(resetPaymentReducer())
 	}
 
 	return (
-		<div className={styles.root}>
-			<div className={styles.container}>
-				<div className={styles.details}>
-					<p className={styles.text}>{intl.selectedPlan}</p>
-					<Card {...plan} />
-				</div>
-				<form className={styles.form} onSubmit={handleSubmit}>
-					<p className={styles.text}>{intl.paymentDetails}</p>
-					<CardElement className={styles.element} />
-					<p className={styles.error}>{error.message}</p>
-					<Button
-						classes={styles.button}
-						type="submit"
-						loading={loading}
-						disabled={!stripe}
-					>
-						{loading ? intl.processingPayment : intl.submitPayment}
-					</Button>
-				</form>
-			</div>
-		</div>
+		<Modal
+			className={classes.modal}
+			open={Boolean(plan)}
+			onClose={handleClose}
+			closeAfterTransition
+			BackdropComponent={Backdrop}
+			BackdropProps={{ timeout: 500 }}
+		>
+			<Fade in={Boolean(plan)}>
+				{switchCase({
+					[state.initial]: (
+						<div className={styles.container}>
+							<div className={styles.header}>
+								<span className={styles.title}>{intl.confirmPay}</span>
+								<Close
+									fontSize="large"
+									onClick={handleClose}
+									style={{ color: colors.blue }}
+								/>
+							</div>
+							<Grid container className={classes.container} spacing={2}>
+								<Grid className={classes.grid} item md={8} sm={12} xs={12}>
+									<Form />
+								</Grid>
+								<Grid item md={4}>
+									<Summary />
+								</Grid>
+							</Grid>
+						</div>
+					),
+					[state.error]: <Error onClose={handleClose} />,
+					[state.success]: <Completed onClose={handleClose} />
+				})(null)(screen)}
+			</Fade>
+		</Modal>
 	)
 }
 
-const mapStateToProps = state => ({
-	plan: state.plan,
-	details: state.details.data,
-	payment: state.payment.details,
-	loading: state.payment.loading,
-	error: state.payment.error
-})
-
-const mapDispatchToProps = dispatch => ({
-	submitPayment: details => dispatch(submitPayment(details)),
-	setPaymentPending: () => dispatch(setPaymentPending()),
-	setPaymentRejected: error => dispatch(setPaymentRejected(error)),
-	setNextPage: () => dispatch(setNextPage()),
-	setPaymentFulfilled: details => dispatch(setPaymentFulfilled(details))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Payment)
+const state = {
+	error: 'error',
+	initial: 'initial',
+	success: 'success'
+}

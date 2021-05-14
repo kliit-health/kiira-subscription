@@ -1,58 +1,55 @@
 import React from 'react'
-import classnames from 'classnames'
-import { Card as CardBase } from 'src/components'
-import model from './model'
+import { Button, Divider } from 'src/components'
+import { switchCase } from 'src/helpers/functions'
+import { Computer, Message, Penguin } from 'src/svgs'
+import intl from 'src/i18n'
 import './styles.scss'
 
-const Card = props => {
-	const { onClick, title, price, active, mobile, benefits, trial } = props
-
-	const handleClick = () => {
-		if (onClick) {
-			onClick(props)
+export const Card = ({ title, price, color, benefits, onSelect, id }) => {
+	const styles = {
+		root: 'card',
+		title: 'card__title',
+		price: 'card__price',
+		benefitsContent: 'card__benefits-content',
+		benefitsTitle: 'card__benefits-title',
+		benefitsDescription: 'card__benefits-description',
+		benefitsContainer: 'card__benefits-container',
+		button: {
+			root: 'card__button'
 		}
 	}
 
-	const modifiers = {
-		'plan-card--active': active & mobile,
-		'plan-card--mobile': mobile
-	}
-
-	const styles = {
-		card: { root: classnames('plan-card', { ...modifiers }) },
-		title: 'plan-card__title',
-		price: 'plan-card__price',
-		details: 'plan-card__price-details',
-		description: 'plan-card__description',
-		item: 'plan-card__item',
-		image: 'plan-card__image',
-		container: 'plan-card__container',
-		trial: 'plan-card__trial',
-		priceContainer: 'plan-card__price-container'
+	const handleClick = () => {
+		onSelect(id)
 	}
 
 	return (
-		<CardBase classes={styles.card} onClick={handleClick}>
-			<h1 className={styles.title}>{title}</h1>
-			<div className={styles.priceContainer}>
-				<p className={styles.price}>
-					{`$${price}`}
-					<span className={styles.details}>/mo</span>
-				</p>
-				{trial.days > 0 && (
-					<span className={styles.trial}>{`Free ${trial.days}-Day Trial`}</span>
-				)}
-			</div>
-			<div className={styles.container}>
-				{benefits.map(({ id, description }) => (
-					<div key={id} className={styles.item}>
-						<img className={styles.image} src={model[id].image} />
-						<p className={styles.description}>{description}</p>
+		<div className={styles.root}>
+			<span className={styles.title}>{title}</span>
+			<span className={styles.price}>{`$${price}/mo`}</span>
+			<Divider color={color} />
+			{benefits.map(({ description, id, title }) => (
+				<div key={id} className={styles.benefitsContent}>
+					{switchCase({
+						[benefit.care]: <Penguin fill={color} />,
+						[benefit.visits]: <Computer fill={color} />,
+						[benefit.messaging]: <Message fill={color} />
+					})(null)(id)}
+					<div className={styles.benefitsContainer}>
+						<span className={styles.benefitsTitle}>{title}</span>
+						<span className={styles.benefitsDescription}>{description}</span>
 					</div>
-				))}
-			</div>
-		</CardBase>
+				</div>
+			))}
+			<Button color={color} onClick={handleClick}>
+				{intl.select}
+			</Button>
+		</div>
 	)
 }
 
-export default Card
+const benefit = {
+	visits: 'visits',
+	messaging: 'messaging',
+	care: 'care'
+}

@@ -1,0 +1,21 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  // flex-direction: column;
+
+  &__container {
+    margin: 80px 40px;
+  }
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__submit-button {
+    margin-top: 20px;
+  }
+}
