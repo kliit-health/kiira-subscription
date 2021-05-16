@@ -6,8 +6,8 @@
 	"scripts": {
 		"start": "webpack-dev-server --config ./webpack.config.js --mode development --progress --colors --port 3000",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"deploy-prod": "aws s3 cp ./dist/bundle.js s3://kiira-subscription/ --acl public-read",
-		"deploy-dev": "aws s3 cp ./dist/bundle.js s3://kiira-subscription/ --acl public-read",
+		"deploy-prod": "aws s3 cp ./dist/bundle.js s3://kiira-subscription-prod/ --acl public-read",
+		"deploy-dev": "aws s3 cp ./dist/bundle.js s3://kiira-subscription-dev/ --acl public-read",
 		"build": "webpack --mode production"
 	},
 	"author": "Steven Taglohner",
