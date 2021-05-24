@@ -17,7 +17,7 @@ const style = {
 	}
 }
 
-export const CardCvcElement = ({ label, error, ...rest }) => {
+export const CardCvcElement = ({ label, error, styles, ...rest }) => {
 	const classes = {
 		root: 'card-cvc-element',
 		label: 'card-cvc-element__label',
@@ -25,7 +25,7 @@ export const CardCvcElement = ({ label, error, ...rest }) => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div className={classes.root} style={styles}>
 			<label className={classes.label}>{label}</label>
 			<div className={classes.wrapper}>
 				<StripeElement options={{ style }} />

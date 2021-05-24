@@ -4,16 +4,14 @@
 .details {
   display: flex;
   flex-wrap: wrap;
-  // flex-direction: column;
+  flex: 2;
+  margin: 15px;
+
 
   &__container {
     margin: 80px 40px;
   }
 
-  &__form {
-    display: flex;
-    flex-wrap: wrap;
-  }
 
   &__submit-button {
     margin-top: 20px;

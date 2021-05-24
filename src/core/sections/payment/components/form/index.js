@@ -111,7 +111,6 @@ export const Form = () => {
 
 	const styles = {
 		root: 'details',
-		form: 'details__form',
 		button: { root: 'details__submit-button' }
 	}
 
@@ -120,26 +119,23 @@ export const Form = () => {
 	}, [touched, errors])
 
 	return (
-		<form className={styles.form} onSubmit={handleSubmit}>
-			<Grid container spacing={2}>
-				{model.map(
-					({ dataKey, title, grid, component: TextField, ...rest }) => (
-						<Grid key={dataKey} item {...grid}>
-							<TextField
-								onChange={handleChange}
-								helperText={touched[dataKey] && errors[dataKey]}
-								label={title}
-								value={values[dataKey]}
-								onBlur={handleBlur}
-								name={dataKey}
-								id={dataKey}
-								error={Boolean(touched[dataKey] && errors[dataKey])}
-								{...rest}
-							/>
-						</Grid>
-					)
-				)}
-			</Grid>
+		<form className={styles.root} onSubmit={handleSubmit}>
+			{model.map(
+				({ dataKey, title, styles, component: TextField, ...rest }) => (
+					<TextField
+						styles={styles}
+						onChange={handleChange}
+						helperText={touched[dataKey] && errors[dataKey]}
+						label={title}
+						value={values[dataKey]}
+						onBlur={handleBlur}
+						name={dataKey}
+						id={dataKey}
+						error={Boolean(touched[dataKey] && errors[dataKey])}
+						{...rest}
+					/>
+				)
+			)}
 			<Button disabled={!(isValid && dirty)} type="submit" color={colors.blue}>
 				{loading ? intl.validating : intl.submit}
 			</Button>

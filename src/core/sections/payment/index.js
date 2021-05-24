@@ -11,21 +11,11 @@ import intl from 'src/i18n'
 import './styles.scss'
 
 const useStyles = makeStyles(theme => ({
-	container: {
-		[theme.breakpoints.down('sm')]: {
-			flexDirection: 'column-reverse'
-		}
-	},
 	modal: {
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	grid: {
-		[theme.breakpoints.down('sm')]: {
-			marginBottom: theme.spacing(4)
-		},
-		display: 'flex'
+		justifyContent: 'center',
+		position: 'relative'
 	}
 }))
 
@@ -38,10 +28,13 @@ export const Payment = () => {
 	const classes = useStyles()
 
 	const styles = {
+		controls: 'payment__controls',
+		form: 'payment__form',
 		title: 'payment__title',
 		modal: 'payment__modal',
 		container: 'payment__container',
-		header: 'payment__header'
+		header: 'payment__header',
+		content: 'payment__content'
 	}
 
 	useEffect(() => {
@@ -65,30 +58,39 @@ export const Payment = () => {
 			BackdropProps={{ timeout: 500 }}
 		>
 			<Fade in={Boolean(plan)}>
-				{switchCase({
-					[state.initial]: (
-						<div className={styles.container}>
-							<div className={styles.header}>
-								<span className={styles.title}>{intl.confirmPay}</span>
-								<Close
-									fontSize="large"
-									onClick={handleClose}
-									style={{ color: colors.blue }}
-								/>
-							</div>
-							<Grid container className={classes.container} spacing={2}>
-								<Grid className={classes.grid} item md={7} sm={12} xs={12}>
+				<div className={styles.form}>
+					<div className={styles.controls}>
+						<Close
+							fontSize="large"
+							onClick={handleClose}
+							style={{ color: colors.blue }}
+						/>
+					</div>
+					{switchCase({
+						[state.initial]: (
+							<div className={styles.container}>
+								<div className={styles.header}>
+									<span className={styles.title}>{intl.confirmPay}</span>
+								</div>
+								<div className={styles.content}>
 									<Form />
-								</Grid>
-								<Grid item md={5}>
 									<Summary />
-								</Grid>
-							</Grid>
-						</div>
-					),
-					[state.error]: <Error onClose={handleClose} />,
-					[state.success]: <Completed onClose={handleClose} />
-				})(null)(screen)}
+								</div>
+							</div>
+						),
+						[state.error]: (
+							<div className={styles.container}>
+								<Error onClose={handleClose} />
+							</div>
+						),
+
+						[state.success]: (
+							<div className={styles.container}>
+								<Completed onClose={handleClose} />
+							</div>
+						)
+					})(null)(screen)}
+				</div>
 			</Fade>
 		</Modal>
 	)

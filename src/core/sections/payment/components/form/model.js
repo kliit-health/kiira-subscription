@@ -11,10 +11,10 @@ export default [
 		title: 'Name On Card',
 		type: 'text',
 		component: TextField,
-		grid: {
-			sm: 12,
-			xs: 12,
-			xs: 12
+		styles: {
+			flex: 4,
+			minWidth: 350,
+			margin: 10
 		}
 	},
 	{
@@ -22,10 +22,10 @@ export default [
 		title: 'Credit Card',
 		type: 'number',
 		component: CardNumberElement,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 4,
+			minWidth: 250,
+			margin: 10
 		}
 	},
 	{
@@ -33,10 +33,10 @@ export default [
 		title: 'Expiration',
 		type: 'number',
 		component: CardExpiryElement,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 2,
+			minWidth: 80,
+			margin: 10
 		}
 	},
 	{
@@ -44,10 +44,10 @@ export default [
 		title: 'CVC',
 		type: 'number',
 		component: CardCvcElement,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 2,
+			minWidth: 50,
+			margin: 10
 		}
 	},
 	{
@@ -55,10 +55,10 @@ export default [
 		title: 'Email',
 		type: 'email',
 		component: TextField,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 3,
+			minWidth: 250,
+			margin: 10
 		}
 	},
 	{
@@ -66,10 +66,10 @@ export default [
 		title: 'Phone Number',
 		type: 'tel',
 		component: TextField,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 3,
+			minWidth: 250,
+			margin: 10
 		}
 	},
 	{
@@ -77,10 +77,10 @@ export default [
 		title: 'ZIP Code',
 		type: 'text',
 		component: TextField,
-		grid: {
-			md: 6,
-			sm: 12,
-			xs: 12
+		styles: {
+			flex: 3,
+			minWidth: 300,
+			margin: 10
 		}
 	}
 ]

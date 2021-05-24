@@ -17,7 +17,7 @@ const style = {
 	}
 }
 
-export const CardNumberElement = ({ label, error, ...rest }) => {
+export const CardNumberElement = ({ label, error, styles, ...rest }) => {
 	const classes = {
 		root: 'card-number-element',
 		label: 'card-number-element__label',
@@ -25,7 +25,7 @@ export const CardNumberElement = ({ label, error, ...rest }) => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div style={styles} className={classes.root}>
 			<label className={classes.label}>{label}</label>
 			<div className={classes.wrapper}>
 				<StripeElement options={{ style }} />

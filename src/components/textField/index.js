@@ -2,7 +2,14 @@ import React from 'react'
 import classnames from 'classnames'
 import './styles.scss'
 
-export const TextField = ({ label, helperText, name, error, ...rest }) => {
+export const TextField = ({
+	label,
+	helperText,
+	name,
+	error,
+	styles,
+	...rest
+}) => {
 	const classes = {
 		root: 'text-field',
 		label: 'text-field__label',
@@ -15,7 +22,7 @@ export const TextField = ({ label, helperText, name, error, ...rest }) => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div style={styles} className={classes.root}>
 			<label htmlFor={name} className={classes.label}>
 				{label}
 			</label>

@@ -2,39 +2,58 @@
 @import 'src/styles/mixins';
 
 .payment {
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 15px
+  }
+
   &__title {
     font-family: Prata;
     font-style: normal;
     font-weight: normal;
     font-size: 34px;
-    margin-bottom: 80px;
   }
 
-  &__container {
+  &__form {
+    padding: 15px;
     overflow: scroll;
     max-width: 1024px;
     background-color: $base-white;
-    padding: 30px;
+    min-width: 418px;
+  }
+
+  &__container {
+    padding: 10px;
 
     @include sm {
-      padding: 40px
+      padding: 10px
     }
 
     @include md {
-      padding: 50px
+      padding: 20px
     }
 
     @include lg {
-      padding: 60px
+      padding: 30px
     }
 
     @include xl {
-      padding: 80px
+      padding: 40px
     }
   }
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    margin: 15px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
   }
 }
