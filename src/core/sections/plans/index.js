@@ -100,5 +100,5 @@ export const Plans = () => {
 const subscription = {
 	basic: 'Basic',
 	pro: 'Pro',
-	premium: 'Premium'
+	premium: 'Pro+'
 }
