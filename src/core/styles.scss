@@ -2,6 +2,7 @@
 @import 'src/styles/mixins';
 
 .core {
+  background-color: $base-white;
   max-width: 1240px;
   min-width: 480px;
 }

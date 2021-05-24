@@ -1,4 +1,6 @@
 import React, { createContext, useState } from 'react'
+import { ThemeProvider } from '@material-ui/core'
+import theme from 'src/theme'
 import { Plans, Payment } from './sections'
 
 import './styles.scss'
@@ -15,15 +17,17 @@ export const Core = () => {
 
 	return (
 		<div className={styles.root}>
-			<Provider
-				value={{
-					plan,
-					selectPlan
-				}}
-			>
-				<Plans />
-				<Payment />
-			</Provider>
+			<ThemeProvider theme={theme}>
+				<Provider
+					value={{
+						plan,
+						selectPlan
+					}}
+				>
+					<Plans />
+					<Payment />
+				</Provider>
+			</ThemeProvider>
 		</div>
 	)
 }

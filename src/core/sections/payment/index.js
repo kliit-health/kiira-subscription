@@ -77,10 +77,10 @@ export const Payment = () => {
 								/>
 							</div>
 							<Grid container className={classes.container} spacing={2}>
-								<Grid className={classes.grid} item md={8} sm={12} xs={12}>
+								<Grid className={classes.grid} item md={7} sm={12} xs={12}>
 									<Form />
 								</Grid>
-								<Grid item md={4}>
+								<Grid item md={5}>
 									<Summary />
 								</Grid>
 							</Grid>

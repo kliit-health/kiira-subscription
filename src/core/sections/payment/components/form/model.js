@@ -1,17 +1,16 @@
 import {
+	TextField,
 	CardNumberElement,
-	CardExpiryElement,
-	CardCvcElement
-} from '@stripe/react-stripe-js'
-import { StripeInput } from 'src/components'
+	CardCvcElement,
+	CardExpiryElement
+} from 'src/components'
 
 export default [
 	{
 		dataKey: 'displayName',
 		title: 'Name On Card',
 		type: 'text',
-		inputProps: undefined,
-		inputComponent: undefined,
+		component: TextField,
 		grid: {
 			sm: 12,
 			xs: 12,
@@ -22,25 +21,18 @@ export default [
 		dataKey: 'cardNumber',
 		title: 'Credit Card',
 		type: 'number',
-		inputProps: {
-			component: CardNumberElement
-		},
-		inputComponent: StripeInput,
+		component: CardNumberElement,
 		grid: {
 			md: 6,
 			sm: 12,
 			xs: 12
 		}
 	},
-
 	{
 		dataKey: 'expiration',
 		title: 'Expiration',
 		type: 'number',
-		inputComponent: StripeInput,
-		inputProps: {
-			component: CardExpiryElement
-		},
+		component: CardExpiryElement,
 		grid: {
 			md: 6,
 			sm: 12,
@@ -51,10 +43,7 @@ export default [
 		dataKey: 'securityCode',
 		title: 'CVC',
 		type: 'number',
-		inputProps: {
-			component: CardCvcElement
-		},
-		inputComponent: StripeInput,
+		component: CardCvcElement,
 		grid: {
 			md: 6,
 			sm: 12,
@@ -65,8 +54,7 @@ export default [
 		dataKey: 'email',
 		title: 'Email',
 		type: 'email',
-		inputProps: undefined,
-		inputComponent: undefined,
+		component: TextField,
 		grid: {
 			md: 6,
 			sm: 12,
@@ -77,8 +65,7 @@ export default [
 		dataKey: 'phoneNumber',
 		title: 'Phone Number',
 		type: 'tel',
-		inputProps: undefined,
-		inputComponent: undefined,
+		component: TextField,
 		grid: {
 			md: 6,
 			sm: 12,
@@ -89,8 +76,7 @@ export default [
 		dataKey: 'postalCode',
 		title: 'ZIP Code',
 		type: 'text',
-		inputProps: undefined,
-		inputComponent: undefined,
+		component: TextField,
 		grid: {
 			md: 6,
 			sm: 12,

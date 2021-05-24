@@ -2,7 +2,6 @@
 @import 'src/styles/mixins';
 
 .payment {
-
   &__title {
     font-family: Prata;
     font-style: normal;
@@ -12,9 +11,26 @@
   }
 
   &__container {
-    padding: 80px;
+    overflow: scroll;
     max-width: 1024px;
     background-color: $base-white;
+    padding: 30px;
+
+    @include sm {
+      padding: 40px
+    }
+
+    @include md {
+      padding: 50px
+    }
+
+    @include lg {
+      padding: 60px
+    }
+
+    @include xl {
+      padding: 80px
+    }
   }
 
   &__header {

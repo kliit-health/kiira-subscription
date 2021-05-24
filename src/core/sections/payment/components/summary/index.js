@@ -2,9 +2,8 @@ import React, { useContext } from 'react'
 import { CoreContext } from 'src/core'
 import { Card, makeStyles } from '@material-ui/core'
 import intl from 'src/i18n'
-
-import './styles.scss'
 import { colors } from 'src/helpers/constants'
+import './styles.scss'
 
 const useStyles = makeStyles(theme => ({
 	card: {
@@ -26,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 
 export const Summary = () => {
 	const { plan } = useContext(CoreContext)
-
 	const classes = useStyles()
 
 	const styles = {

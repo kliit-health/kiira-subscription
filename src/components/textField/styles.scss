@@ -1,0 +1,45 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.text-field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 75px;
+
+  &__label {
+    @include user-select-none;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    margin: 0
+  }
+
+  &__input {
+    border: none;
+    box-shadow: 0;
+    outline: none;
+    border-bottom: 2px solid black;
+    color: $base-charcoal;
+    font-family: 'Roboto';
+    font-size: 1em;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px 0;
+
+    &--error {
+      color: $base-red;
+    }
+  }
+
+
+  &__helper {
+    @include user-select-none;
+    font-family: 'Nunito Sans';
+    font-size: .8em;
+    margin: 2px 0 0;
+
+    &--error {
+      color: $base-red;
+    }
+  }
+}

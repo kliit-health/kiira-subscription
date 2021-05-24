@@ -2,16 +2,16 @@ import React, { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CoreContext } from 'src/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Slider from 'react-slick'
 import { colors } from 'src/helpers/constants'
 import { switchCase } from 'src/helpers/functions'
 import { useDidMount } from 'src/hooks'
 import { getPlans } from 'src/redux/actions'
 import { Card } from './components'
 import './styles.scss'
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-import Slider from 'react-slick'
 
 export const Plans = () => {
 	const dispatch = useDispatch()
