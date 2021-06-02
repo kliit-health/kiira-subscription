@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding: 15px
+    padding: 10px
   }
 
   &__title {
@@ -15,40 +15,56 @@
     font-style: normal;
     font-weight: normal;
     font-size: 34px;
+    margin-left: 8px;
   }
 
   &__form {
-    padding: 15px;
     overflow: scroll;
-    max-width: 1024px;
+    max-width: 600px;
     background-color: $base-white;
-    min-width: 418px;
-  }
-
-  &__container {
-    padding: 10px;
+    margin: 10px;
 
     @include sm {
-      padding: 10px
+      margin: 20px;
     }
 
     @include md {
-      padding: 20px
+      max-width: 600px;
+      margin: 20px;
     }
 
     @include lg {
-      padding: 30px
+      max-width: 900px;
+      margin: 30px;
     }
 
     @include xl {
-      padding: 40px
+      max-width: 900px;
+      margin: 40px;
     }
+  }
+
+  &__container {
+    margin: 20px;
   }
 
   &__header {
     display: flex;
     flex-direction: row;
-    margin: 15px;
+
+    @include sm {}
+
+    @include md {
+      margin: 20px;
+    }
+
+    @include lg {
+      margin: 20px;
+    }
+
+    @include xl {
+      margin: 20px;
+    }
   }
 
   &__content {

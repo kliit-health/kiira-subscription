@@ -3,16 +3,30 @@
 
 .summary {
   display: flex;
-  margin: 15px;
   flex-direction: column;
   align-items: center;
   align-self: flex-end;
-  width: 280px;
-  min-width: 280px;
-  padding: 30px;
+  padding: 20px;
   background-color: #ECF3FF;
   justify-content: space-between;
   border-radius: 12px;
+  margin: 20px 0;
+
+  @include sm {}
+
+  @include md {
+    margin: 20px;
+  }
+
+  @include lg {
+    margin: 20px;
+    max-width: 280px;
+  }
+
+  @include xl {
+    margin: 20px;
+    max-width: 280px;
+  }
 
   &__header {
     display: flex;
@@ -21,7 +35,7 @@
   &__title {
     font-family: 'Prata';
     font-weight: 400;
-    font-size: 28px;
+    font-size: 1.5em;
   }
 
   &__content {
@@ -42,14 +56,14 @@
   &__fee {
     font-family: Nunito Sans;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 1.2em;
     margin: 5px 0;
   }
 
   &__due {
     font-family: Nunito Sans;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 1.2em;
     margin: 5px 0;
   }
 
@@ -60,7 +74,7 @@
   &__description {
     font-family: Nunito Sans;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 1em;
     margin: 0
   }
 }

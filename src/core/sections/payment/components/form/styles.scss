@@ -5,15 +5,18 @@
   display: flex;
   flex-wrap: wrap;
   flex: 2;
-  margin: 15px;
 
+  @include sm {}
 
-  &__container {
-    margin: 80px 40px;
+  @include md {
+    margin: 20px;
   }
 
+  @include lg {
+    margin: 20px;
+  }
 
-  &__submit-button {
-    margin-top: 20px;
+  @include xl {
+    margin: 20px;
   }
 }

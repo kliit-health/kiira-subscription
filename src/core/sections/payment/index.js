@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Modal, Backdrop, Fade, Grid, makeStyles } from '@material-ui/core'
+import { Modal, Backdrop, Fade, makeStyles } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 import { Form, Summary, Error, Completed } from './components'
 import { switchCase } from 'src/helpers/functions'
@@ -83,7 +83,6 @@ export const Payment = () => {
 								<Error onClose={handleClose} />
 							</div>
 						),
-
 						[state.success]: (
 							<div className={styles.container}>
 								<Completed onClose={handleClose} />

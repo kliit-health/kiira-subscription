@@ -83,7 +83,7 @@ export const Form = () => {
 				})
 		}),
 		validateOnBlur: true,
-		validateOnChange: false,
+		validateOnChange: true,
 		initialValues: {
 			displayName: '',
 			email: '',

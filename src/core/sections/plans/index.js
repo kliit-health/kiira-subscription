@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CoreContext } from 'src/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import Slider from 'react-slick'
+import Carousel from 'react-multi-carousel'
 import { colors } from 'src/helpers/constants'
 import { switchCase } from 'src/helpers/functions'
 import { useDidMount } from 'src/hooks'
@@ -10,12 +10,28 @@ import { getPlans } from 'src/redux/actions'
 import { Card } from './components'
 import './styles.scss'
 
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
+import 'react-multi-carousel/lib/styles.css'
+
+const responsive = {
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 1
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 700 },
+		items: 1
+	},
+	mobile: {
+		breakpoint: { max: 700, min: 0 },
+		items: 1
+	}
+}
 
 export const Plans = () => {
 	const dispatch = useDispatch()
-	const tablet = useMediaQuery('(min-width:1280px)')
+	const tablet = useMediaQuery('(min-width:980px)')
+	const mobile = useMediaQuery('(max-width:700px)')
+
 	const { selectPlan } = useContext(CoreContext)
 	const plans = useSelector(state => state.plans.data)
 
@@ -31,36 +47,6 @@ export const Plans = () => {
 
 	const handleSelect = plan => {
 		selectPlan(plan)
-	}
-
-	const settings = {
-		dots: true,
-		infinite: false,
-		speed: 500,
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		initialSlide: 1,
-		centerMode: true,
-		responsive: [
-			{
-				breakpoint: 1240,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 880,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					initialSlide: 1,
-					infinite: true
-				}
-			}
-		]
 	}
 
 	return tablet ? (
@@ -79,9 +65,14 @@ export const Plans = () => {
 			))}
 		</div>
 	) : (
-		<Slider
-			{...settings}
-			children={plans.map(plan => (
+		<Carousel
+			removeArrowOnDeviceType={['tablet', 'mobile']}
+			responsive={responsive}
+			centerMode={!mobile}
+			infinite
+			showDots
+		>
+			{plans.map(plan => (
 				<Card
 					key={plan.title}
 					color={switchCase({
@@ -93,7 +84,7 @@ export const Plans = () => {
 					{...plan}
 				/>
 			))}
-		/>
+		</Carousel>
 	)
 }
 

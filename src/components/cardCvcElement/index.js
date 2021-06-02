@@ -7,7 +7,7 @@ const style = {
 	base: {
 		fontWeight: '400',
 		fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-		fontSize: '18px',
+		fontSize: '17px',
 		'::placeholder': {
 			color: '#fff'
 		}

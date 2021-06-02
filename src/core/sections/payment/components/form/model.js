@@ -13,7 +13,7 @@ export default [
 		component: TextField,
 		styles: {
 			flex: 4,
-			minWidth: 350,
+			minWidth: 200,
 			margin: 10
 		}
 	},
@@ -24,7 +24,7 @@ export default [
 		component: CardNumberElement,
 		styles: {
 			flex: 4,
-			minWidth: 250,
+			minWidth: 220,
 			margin: 10
 		}
 	},
@@ -57,7 +57,7 @@ export default [
 		component: TextField,
 		styles: {
 			flex: 3,
-			minWidth: 250,
+			minWidth: 220,
 			margin: 10
 		}
 	},
@@ -68,7 +68,7 @@ export default [
 		component: TextField,
 		styles: {
 			flex: 3,
-			minWidth: 250,
+			minWidth: 220,
 			margin: 10
 		}
 	},
@@ -79,7 +79,7 @@ export default [
 		component: TextField,
 		styles: {
 			flex: 3,
-			minWidth: 300,
+			minWidth: 220,
 			margin: 10
 		}
 	}
