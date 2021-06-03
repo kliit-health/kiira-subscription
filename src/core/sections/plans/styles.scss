@@ -15,13 +15,3 @@
     margin-left: 'auto'
   }
 }
-
-.react-multi-carousel-dot button {
-  border-width: 0px !important;
-  background-color: $base-blue !important;
-}
-
-.react-multi-carousel-dot--active button {
-  border-width: 0px !important;
-  background-color: darken($base-blue, 30) !important;
-}

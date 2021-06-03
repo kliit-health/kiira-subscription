@@ -59,3 +59,9 @@
     @content;
   }
 }
+
+@mixin xm {
+  @media (min-width: #{$screen-xm-min}) {
+    @content;
+  }
+}

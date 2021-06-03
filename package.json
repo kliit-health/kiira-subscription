@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"deploy-prod": "aws s3 cp ./dist/bundle.js s3://kiira-subscription-prod/ --acl public-read",
 		"deploy-dev": "aws s3 cp ./dist/bundle.js s3://kiira-subscription-dev/ --acl public-read",
-		"build": "webpack --mode production"
+		"build": "webpack"
 	},
 	"author": "Steven Taglohner",
 	"license": "ISC",
@@ -29,14 +29,15 @@
 		"prop-types": "^15.7.2",
 		"proptypes": "^1.1.0",
 		"react": "^16.13.1",
-		"react-coverflow": "^0.2.20",
 		"react-dom": "^16.13.1",
-		"react-multi-carousel": "^2.6.3",
+		"react-modal": "^3.14.2",
 		"react-redux": "^7.2.1",
+		"react-slick": "^0.28.1",
 		"recompose": "^0.30.0",
 		"redux": "^4.0.5",
 		"redux-promise-middleware": "^6.1.2",
 		"redux-thunk": "^2.3.0",
+		"slick-carousel": "^1.8.1",
 		"yup": "^0.29.3"
 	},
 	"devDependencies": {

@@ -7,10 +7,32 @@
   background-color: white;
   border-radius: 20px;
   margin: 0 0 30px 10px;
+  max-width: 320px;
+
   box-shadow:
     0 1px 20px rgba(73, 73, 73, 0.11),
     0 2px 2px rgba(73, 73, 73, 0.11),
     0 4px 4px rgba(73, 73, 73, 0.11);
+
+  @include xm {
+    max-width: 400px;
+  }
+
+  @include sm {
+    max-width: 400px;
+  }
+
+  @include md {
+    max-width: 320px;
+  }
+
+  @include lg {
+    max-width: 320px;
+  }
+
+  @include xl {
+    max-width: 320px;
+  }
 
   &__header {
     display: flex;

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Modal, Backdrop, Fade, makeStyles } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
+import Modal from 'react-modal'
 import { Close } from '@material-ui/icons'
 import { Form, Summary, Error, Completed } from './components'
 import { switchCase } from 'src/helpers/functions'
@@ -50,47 +51,42 @@ export const Payment = () => {
 
 	return (
 		<Modal
-			className={classes.modal}
-			open={Boolean(plan)}
-			onClose={handleClose}
-			closeAfterTransition
-			BackdropComponent={Backdrop}
-			BackdropProps={{ timeout: 500 }}
+			isOpen={Boolean(plan)}
+			onRequestClose={handleClose}
+			style={modalStyles}
 		>
-			<Fade in={Boolean(plan)}>
-				<div className={styles.form}>
-					<div className={styles.controls}>
-						<Close
-							fontSize="large"
-							onClick={handleClose}
-							style={{ color: colors.blue }}
-						/>
-					</div>
-					{switchCase({
-						[state.initial]: (
-							<div className={styles.container}>
-								<div className={styles.header}>
-									<span className={styles.title}>{intl.confirmPay}</span>
-								</div>
-								<div className={styles.content}>
-									<Form />
-									<Summary />
-								</div>
-							</div>
-						),
-						[state.error]: (
-							<div className={styles.container}>
-								<Error onClose={handleClose} />
-							</div>
-						),
-						[state.success]: (
-							<div className={styles.container}>
-								<Completed onClose={handleClose} />
-							</div>
-						)
-					})(null)(screen)}
+			<div className={styles.form}>
+				<div className={styles.controls}>
+					<Close
+						fontSize="large"
+						onClick={handleClose}
+						style={{ color: colors.blue }}
+					/>
 				</div>
-			</Fade>
+				{switchCase({
+					[state.initial]: (
+						<div className={styles.container}>
+							<div className={styles.header}>
+								<span className={styles.title}>{intl.confirmPay}</span>
+							</div>
+							<div className={styles.content}>
+								<Form />
+								<Summary />
+							</div>
+						</div>
+					),
+					[state.error]: (
+						<div className={styles.container}>
+							<Error onClose={handleClose} />
+						</div>
+					),
+					[state.success]: (
+						<div className={styles.container}>
+							<Completed onClose={handleClose} />
+						</div>
+					)
+				})(null)(screen)}
+			</div>
 		</Modal>
 	)
 }
@@ -99,4 +95,16 @@ const state = {
 	error: 'error',
 	initial: 'initial',
 	success: 'success'
+}
+
+const modalStyles = {
+	content: {
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		padding: 0,
+		transform: 'translate(-50%, -50%)'
+	}
 }
