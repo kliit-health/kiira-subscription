@@ -4,5 +4,7 @@ import { collections } from 'src/helpers/constants'
 
 export const getPlans = () => ({
 	type: GET_PLANS,
-	payload: firebaseFetch(collections.plans)
+	payload: firebaseFetch(collections.plans, [
+		{ key: 'type', operator: '==', value: 'individual' }
+	])
 })
