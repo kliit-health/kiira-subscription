@@ -10,9 +10,11 @@
   background-color: #ECF3FF;
   justify-content: space-between;
   border-radius: 12px;
-  margin: 20px 0;
+  margin: 10px 0;
 
-  @include sm {}
+  @include sm {
+    margin: 10px 0;
+  }
 
   @include md {
     margin: 20px;

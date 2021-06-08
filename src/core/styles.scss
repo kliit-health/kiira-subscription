@@ -2,6 +2,9 @@
 @import 'src/styles/mixins';
 
 .core {
-  background-color: $base-white;
-  max-width: 1000px;
+  background-color: 'transparent';
+  align-items: center;
+  justify-content: center;
+  max-width: 960px;
+  padding: 10px;
 }

@@ -5,7 +5,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  height: 75px;
+  // height: 75px;
 
   &__label {
     @include user-select-none;

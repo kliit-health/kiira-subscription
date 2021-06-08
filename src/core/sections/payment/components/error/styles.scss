@@ -11,22 +11,27 @@
     margin-bottom: 12px;
   }
 
-  &__header {
-    display: flex;
-    justify-content: flex-end
-  }
-
   &__container {
-    padding: 80px;
-    max-width: 1024px;
-    background-color: $base-white;
-  }
-
-  &__content {
     display: flex;
+    background-color: $base-white;
     min-height: 200px;
     align-items: center;
     justify-content: center;
-  }
 
+    @include sm {
+      margin: 10px 10px;
+    }
+
+    @include md {
+      margin: 10px 20px;
+    }
+
+    @include lg {
+      margin: 10px 20px;
+    }
+
+    @include xl {
+      margin: 10px 20px;
+    }
+  }
 }

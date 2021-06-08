@@ -3,8 +3,8 @@
 
 .plans {
   display: flex;
-  justify-content: space-evenly;
-  align-self: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 
   &__container {
     display: 'flex';

@@ -14,7 +14,7 @@ export default [
 		styles: {
 			flex: 4,
 			minWidth: 200,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -25,7 +25,7 @@ export default [
 		styles: {
 			flex: 4,
 			minWidth: 220,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -36,7 +36,7 @@ export default [
 		styles: {
 			flex: 2,
 			minWidth: 80,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -47,7 +47,7 @@ export default [
 		styles: {
 			flex: 2,
 			minWidth: 50,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -58,7 +58,7 @@ export default [
 		styles: {
 			flex: 3,
 			minWidth: 220,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -69,7 +69,7 @@ export default [
 		styles: {
 			flex: 3,
 			minWidth: 220,
-			margin: 10
+			margin: 5
 		}
 	},
 	{
@@ -80,7 +80,7 @@ export default [
 		styles: {
 			flex: 3,
 			minWidth: 220,
-			margin: 10
+			margin: 5
 		}
 	}
 ]

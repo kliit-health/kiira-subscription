@@ -18,7 +18,8 @@ export const TextField = ({
 		}),
 		helper: classnames('text-field__helper', {
 			'text-field__helper--error': error
-		})
+		}),
+		wrapper: 'text-field__wrapper'
 	}
 
 	return (
@@ -26,12 +27,14 @@ export const TextField = ({
 			<label htmlFor={name} className={classes.label}>
 				{label}
 			</label>
-			<input
-				autoComplete={Math.random().toString()}
-				className={classes.input}
-				name={name}
-				{...rest}
-			/>
+			<div className={classes.wrapper}>
+				<input
+					autoComplete={Math.random().toString()}
+					className={classes.input}
+					name={name}
+					{...rest}
+				/>
+			</div>
 			<p className={classes.helper}>{helperText}</p>
 		</div>
 	)

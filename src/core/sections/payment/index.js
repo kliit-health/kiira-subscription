@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
-import Modal from 'react-modal'
 import { Close } from '@material-ui/icons'
+import { Modal } from 'react-responsive-modal'
 import { Form, Summary, Error, Completed } from './components'
 import { switchCase } from 'src/helpers/functions'
 import { colors } from 'src/helpers/constants'
@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { resetPaymentReducer } from 'src/redux/actions'
 import { CoreContext } from 'src/core'
 import intl from 'src/i18n'
+import 'react-responsive-modal/styles.css'
 import './styles.scss'
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +27,6 @@ export const Payment = () => {
 	const paymentError = useSelector(state => state.payment.error)
 	const completed = useSelector(state => state.payment.completed)
 	const dispatch = useDispatch()
-	const classes = useStyles()
 
 	const styles = {
 		controls: 'payment__controls',
@@ -51,9 +51,10 @@ export const Payment = () => {
 
 	return (
 		<Modal
-			isOpen={Boolean(plan)}
-			onRequestClose={handleClose}
-			style={modalStyles}
+			showCloseIcon={false}
+			open={Boolean(plan)}
+			onClose={handleClose}
+			center
 		>
 			<div className={styles.form}>
 				<div className={styles.controls}>
