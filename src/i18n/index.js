@@ -35,7 +35,7 @@ export default {
 	thankYou:
 		'thank you for being a Kiira customer. You will shortly receive an email. Follow the instructions and get in touch with an expert!',
 	planNotAvailable:
-		'The selected plan is not available in your state at this time',
+		'The selected plan is not available in your state at this time. Select the Basic plan and start chatting with an expert!',
 	select: 'Select',
 	membershipStart:
 		'Membership begins on the day of payment and auto-renews each month. Cancel anytime.',
@@ -46,5 +46,7 @@ export default {
 	somethingWentWrong:
 		'Something went wrong. Please close this window and try again.',
 	completed:
-		'Thanks for joining Kiira! Please check your email for further instructions.'
+		'Thanks for joining Kiira! Please check your email for further instructions.',
+	consent: 'By submitting this form, you consent to our ',
+	terms: 'Terms and Conditions'
 }

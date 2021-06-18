@@ -21,7 +21,6 @@ import {
 	confirmCardPayment
 } from 'src/redux/actions'
 import './styles.scss'
-import { isEmpty } from 'lodash'
 
 const phoneRegex = RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)
 const zipRegex = RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/)
@@ -111,12 +110,10 @@ export const Form = () => {
 
 	const styles = {
 		root: 'details',
-		button: { root: 'details__submit-button' }
+		button: { root: 'details__submit-button' },
+		terms: 'details__terms',
+		link: 'details__link'
 	}
-
-	useEffect(() => {
-		console.log({ touched, errors })
-	}, [touched, errors])
 
 	return (
 		<form className={styles.root} onSubmit={handleSubmit}>
@@ -136,6 +133,13 @@ export const Form = () => {
 					/>
 				)
 			)}
+			<p className={styles.terms}>
+				{intl.consent}
+				<a className={styles.link} href="https://www.kiira.io/terms-conditions">
+					{intl.terms}
+				</a>
+				.
+			</p>
 			<Button disabled={!(isValid && dirty)} type="submit" color={colors.blue}>
 				{loading ? intl.validating : intl.submit}
 			</Button>

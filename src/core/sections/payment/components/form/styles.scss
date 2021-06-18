@@ -19,4 +19,18 @@
   @include xl {
     margin: 20px;
   }
+
+  &__terms {
+    font-family: Nunito Sans;
+    font-weight: 300;
+    font-size: 1em;
+    margin: 5px;
+    line-height: normal !important;
+  }
+
+  &__link {
+    font-size: 1em !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
 }
