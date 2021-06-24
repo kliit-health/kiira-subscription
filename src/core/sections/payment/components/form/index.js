@@ -64,10 +64,10 @@ export const Form = () => {
 		validationSchema: object({
 			email: string()
 				.email(intl.invalidEmailFormat)
-				.required(intl.emailRequired)
 				.test('test-email-existence', intl.emailInUse, value =>
 					value ? verifyEmailAddress(value) : true
-				),
+				)
+				.required(intl.emailRequired),
 			phoneNumber: string()
 				.matches(phoneRegex, intl.invalidPhoneNumber)
 				.required(intl.phoneNumberRequired),
@@ -81,7 +81,6 @@ export const Form = () => {
 					return plan.states.some(state => state === selectedState.code)
 				})
 		}),
-		validateOnBlur: true,
 		validateOnChange: true,
 		initialValues: {
 			displayName: '',
@@ -128,6 +127,7 @@ export const Form = () => {
 						onBlur={handleBlur}
 						name={dataKey}
 						id={dataKey}
+						key={dataKey}
 						error={Boolean(touched[dataKey] && errors[dataKey])}
 						{...rest}
 					/>

@@ -54,7 +54,14 @@ export const verifyEmailAddress = email =>
 			const callable = functions.httpsCallable('verifyEmailAddress')
 			try {
 				const result = await callable({ email })
-				resolve(!result.data)
+
+				if ('errorInfo' in result.data) {
+					if (result.data.errorInfo.code === 'auth/user-not-found') {
+						resolve(true)
+					}
+				} else {
+					resolve(false)
+				}
 			} catch (error) {
 				reject(false)
 			}
