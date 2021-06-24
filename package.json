@@ -17,7 +17,7 @@
 		"@material-ui/icons": "^4.9.1",
 		"@reduxjs/toolkit": "^1.4.0",
 		"@stripe/react-stripe-js": "^1.1.2",
-		"@stripe/stripe-js": "^1.10.0",
+		"@stripe/stripe-js": "^1.15.0",
 		"axios": "^0.19.2",
 		"card-validator": "^8.1.0",
 		"classnames": "^2.2.6",
