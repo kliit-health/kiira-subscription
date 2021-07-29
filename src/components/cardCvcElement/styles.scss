@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.card-cvc-element {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  // height: 75px;
+
+  &__label {
+    @include user-select-none;
+    font-family: 'Nunito Sans';
+    font-size: 1em;
+    margin: 0
+  }
+
+  &__wrapper {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+    margin-top: 4px;
+  }
+}

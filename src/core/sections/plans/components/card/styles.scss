@@ -1,50 +1,114 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
 
-.plan-card {
+.card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  background-color: white;
+  border-radius: 20px;
+  flex: 1;
+  margin: 10px;
+  max-width: calc(50% - 20px);
+  min-width: 280px;
+  box-shadow:
+    0 1px 20px rgba(73, 73, 73, 0.11),
+    0 2px 2px rgba(73, 73, 73, 0.11),
+    0 4px 4px rgba(73, 73, 73, 0.11);
+
+  @media (max-width: 620px) {
+    max-width: 100%;
+  }
+
+
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 70px;
+    padding: 10px 15px;
+    border-radius: 20px 20px 0px 0px;
+  }
+
+  &__title-container {
+    align-items: center;
+    display: flex;
+    transform: rotate(-90deg);
+    width: 50px;
+  }
 
   &__title {
-    @include user-select-none;
-    font-family: $header-font;
-    font-size: 1.6em;
-    color: $base-charcoal;
-    margin: 0;
-    padding: 20px 20px 0 !important;
-    line-height: normal;
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
   }
 
   &__price {
-    @include user-select-none;
-    font-family: 'Poppins' !important;
-    font-size: 2.1em;
-    color: $base-blue;
-    margin: 0;
-    line-height: normal;
+    font-family: Nunito Sans;
+    align-self: flex-end;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
   }
 
-  &__description {
-    @include user-select-none;
-    font-family: 'Open Sans' !important;
-    font-size: .9em;
-    color: $base-charcoal;
-    margin: 0;
-    padding: 0px 20px 20px;
-    text-align: center;
-    line-height: normal;
+  &__benefits-content {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin: 10px 0px;
+    align-items: center;
   }
 
-  &--mobile {
-    max-height: 180px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+  &__benefits-description {
+    display: flex;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    color: $base-black;
   }
 
-  &--active {
-    outline: solid $base-blue 2px;
-    border-radius: 0px;
+  &__content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    justify-content: space-evenly;
+    height: 230px;
+  }
+
+  &__button {
+    height: 50px;
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 0px 20px 20px;
+    @include pointer-on-hover;
+  }
+
+  &__button-title {
+    color: white;
+    user-select: none;
+    flex-direction: row;
+    font-family: 'Nunito Sans';
+    font-size: 22px;
+  }
+
+  &__trial-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: $base-white;
+  }
+
+  &__trial-container {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $dark-blue;
+    border-radius: 0 20px;
   }
 }

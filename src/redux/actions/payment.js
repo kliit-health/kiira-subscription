@@ -1,31 +1,48 @@
 import {
+	CREATE_PAYMENT_METHOD,
 	SUBMIT_PAYMENT,
-	SUBMIT_PAYMENT_FULFILLED,
-	SUBMIT_PAYMENT_PENDING,
-	SUBMIT_PAYMENT_REJECTED
+	CONFIRM_CARD_PAYMENT,
+	RESET_PAYMENT_REDUCER
 } from 'src/redux/types'
-import { processPlanPayment } from 'src/firebase/functions'
+import { processPayment } from 'src/firebase/functions'
+
+export const createPaymentMethod = ({ numberElement, stripe, details }) => ({
+	type: CREATE_PAYMENT_METHOD,
+	payload: stripe
+		.createPaymentMethod({
+			type: 'card',
+			card: numberElement
+		})
+		.then(({ paymentMethod, error }) => {
+			if (error) throw Error
+			return { paymentMethod, details }
+		})
+})
 
 export const submitPayment = ({
-	paymentMethod = null,
-	paymentIntent = null,
-	details,
-	planId
+	paymentMethod,
+	email,
+	displayName,
+	phoneNumber,
+	postalCode,
+	plan
 }) => ({
 	type: SUBMIT_PAYMENT,
-	payload: processPlanPayment({ paymentMethod, paymentIntent, details, planId })
+	payload: processPayment({
+		paymentMethod,
+		email,
+		plan: { id: plan.id },
+		displayName,
+		phoneNumber,
+		postalCode
+	})
 })
 
-export const setPaymentPending = () => ({
-	type: SUBMIT_PAYMENT_PENDING
+export const confirmCardPayment = ({ stripe, clientSecret }) => ({
+	type: CONFIRM_CARD_PAYMENT,
+	payload: stripe.confirmCardPayment(clientSecret)
 })
 
-export const setPaymentRejected = error => ({
-	type: SUBMIT_PAYMENT_REJECTED,
-	payload: error
-})
-
-export const setPaymentFulfilled = details => ({
-	type: SUBMIT_PAYMENT_FULFILLED,
-	payload: details
+export const resetPaymentReducer = () => ({
+	type: RESET_PAYMENT_REDUCER
 })

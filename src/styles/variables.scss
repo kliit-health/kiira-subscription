@@ -4,7 +4,7 @@ $header-font: 'Open Sans';
 
 //colors 
 
-$base-blue: #0089FF;
+$base-blue: #7DABFE;
 $base-violet: #8359FF;
 $base-pink: #FA9194;
 $base-gray: #999999;
@@ -14,5 +14,12 @@ $base-black: #000000;
 $base-green: #6DD400;
 $base-red: red;
 $dark-blue: #0066CF;
+$base-purple: #CF7DFE;
+$base-teal: #00C0E2;
 
-$medium: 640px
+$medium: 640px;
+$screen-xm-min: 400px;
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;

@@ -2,54 +2,63 @@
 @import 'src/styles/mixins';
 
 .payment {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  flex: 1;
 
-  &__container {
-    margin: 80px 40px 0px;
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    font-family: Prata;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34px;
   }
 
   &__form {
+    min-width: 300px;
+    background-color: $base-white;
+  }
+
+  &__container {
     display: flex;
     flex-direction: column;
   }
 
-  &__text {
-    @include user-select-none;
-    font-family: $header-font;
-    font-size: 1.4em;
-    font-weight: 500;
-    color: white;
-    margin: 0px 0px 10px;
+  &__header {
+    display: flex;
+    flex-direction: row;
+
+    @include sm {
+      margin: 10px 10px;
+    }
+
+    @include md {
+      margin: 10px 20px;
+    }
+
+    @include lg {
+      margin: 10px 20px;
+    }
+
+    @include xl {
+      margin: 10px 20px;
+    }
   }
 
-  &__details {
-    margin-bottom: 40px;
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
   }
 
-  &__error {
-    @include user-select-none;
-    margin: 0;
-    font-family: 'Roboto';
-    font-size: .7em;
-    padding: 5px 0;
-    color: darken($base-pink, 10%);
+  &__modal {
+    max-width: 900px;
+    @include hide-scrollbar;
   }
 
-  &__stripe-element {
-    background-color: white;
-    padding: 12px;
-    border-radius: 4px;
-    font-family: 'Roboto';
-  }
-
-  &__submit-button {
-    position: absolute;
-    z-index: 100;
-    margin: 40px;
-    bottom: 0;
-    right: 0;
+  &__modal-overlay {
+    @include hide-scrollbar;
   }
 }

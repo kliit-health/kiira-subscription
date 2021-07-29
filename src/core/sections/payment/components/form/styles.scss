@@ -1,0 +1,36 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 2;
+
+  @include sm {}
+
+  @include md {
+    margin: 20px;
+  }
+
+  @include lg {
+    margin: 20px;
+  }
+
+  @include xl {
+    margin: 20px;
+  }
+
+  &__terms {
+    font-family: Nunito Sans;
+    font-weight: 300;
+    font-size: 1em;
+    margin: 5px;
+    line-height: normal !important;
+  }
+
+  &__link {
+    font-size: 1em !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+}

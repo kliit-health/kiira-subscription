@@ -3,16 +3,7 @@
 
 .divider {
   display: flex;
-  width: 30%;
-  height: 1px;
-  background-color: white;
-  padding: 0 40px;
-
-  &--gradient {
-    @include gradient-background;
-  }
-
-  &--bold {
-    height: 2px;
-  }
+  height: 3px;
+  background-color: $base-blue;
+  margin: 0px 20px
 }

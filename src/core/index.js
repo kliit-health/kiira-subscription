@@ -1,87 +1,33 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { compose } from 'recompose'
-import SwipeableViews from 'react-swipeable-views'
-import { Button, Stepper } from 'src/components'
-import intl from 'src/i18n'
-import { Details, Plans, Payment, Success } from './sections'
-import { setPreviousPage, getPlans, setPlan } from 'src/redux/actions'
-import oval from 'src/assets/images/oval.svg'
+import React, { createContext, useState } from 'react'
+import { ThemeProvider } from '@material-ui/core'
+import theme from 'src/theme'
+import { Plans, Payment } from './sections'
 
 import './styles.scss'
 
-const Core = ({
-	index,
-	setPreviousPage,
-	getPlans,
-	setPlan,
-	plans,
-	loading
-}) => {
-	useEffect(() => {
-		getPlans()
-	}, [])
+export const CoreContext = createContext()
+const { Provider } = CoreContext
 
-	useEffect(() => {
-		if (plans.length > 0) {
-			setPlan(plans[1])
-		}
-	}, [plans])
-
-	const handleBack = () => {
-		setPreviousPage()
-	}
+export const Core = () => {
+	const [plan, selectPlan] = useState(null)
 
 	const styles = {
-		root: 'core',
-		oval: 'core__oval',
-		container: 'core__container',
-		back: { root: 'core__button-back' }
+		root: 'core'
 	}
 
 	return (
 		<div className={styles.root}>
-			<div className={styles.container}>
-				<Stepper current={index} hidden={index === 4 || loading} />
-				<Button
-					hidden={index === 0 || loading || index === 3}
-					classes={styles.back}
-					onClick={handleBack}
-					link
-					back
-				>
-					{intl.back}
-				</Button>
-				<SwipeableViews
-					style={{ display: 'flex', flex: 1, width: '100%' }}
-					containerStyle={{
-						display: 'flex',
-						flex: 1,
-						width: '100%'
+			<ThemeProvider theme={theme}>
+				<Provider
+					value={{
+						plan,
+						selectPlan
 					}}
-					index={index}
-					slideStyle={{ display: 'flex' }}
 				>
-					<Details />
 					<Plans />
 					<Payment />
-					<Success />
-				</SwipeableViews>
-			</div>
+				</Provider>
+			</ThemeProvider>
 		</div>
 	)
 }
-
-const mapStateToProps = state => ({
-	index: state.navigator.index,
-	plans: state.plans.data,
-	loading: state.payment.loading
-})
-
-const mapDispatchToProps = dispatch => ({
-	setPreviousPage: () => dispatch(setPreviousPage()),
-	getPlans: () => dispatch(getPlans()),
-	setPlan: details => dispatch(setPlan(details))
-})
-
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Core)

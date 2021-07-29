@@ -1,0 +1,37 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.completed {
+
+  &__description {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  &__container {
+    display: flex;
+    background-color: $base-white;
+    min-height: 200px;
+    align-items: center;
+    justify-content: center;
+
+    @include sm {
+      margin: 10px 10px;
+    }
+
+    @include md {
+      margin: 10px 20px;
+    }
+
+    @include lg {
+      margin: 10px 20px;
+    }
+
+    @include xl {
+      margin: 10px 20px;
+    }
+  }
+}

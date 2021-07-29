@@ -21,21 +21,25 @@ export const firebaseFetch = (collectionName, conditions = [], limit = 10000) =>
 		})()
 	)
 
-export const processPlanPayment = ({
+export const processPayment = ({
 	paymentMethod,
-	paymentIntent,
-	details,
-	planId
+	email,
+	plan,
+	displayName,
+	phoneNumber,
+	postalCode
 }) =>
 	new Promise((resolve, reject) =>
 		(async function () {
-			const processPlanPayment = functions.httpsCallable('processPlanPayment')
+			const processPayment = functions.httpsCallable('processPlanPayment')
 			try {
-				const response = await processPlanPayment({
+				const response = await processPayment({
 					paymentMethod,
-					paymentIntent,
-					details,
-					planId
+					email,
+					plan,
+					displayName,
+					phoneNumber,
+					postalCode
 				})
 				resolve(response.data)
 			} catch (error) {
@@ -49,10 +53,17 @@ export const verifyEmailAddress = email =>
 		(async function () {
 			const callable = functions.httpsCallable('verifyEmailAddress')
 			try {
-				const response = await callable({ email })
-				resolve(response.data)
+				const result = await callable({ email })
+
+				if ('errorInfo' in result.data) {
+					if (result.data.errorInfo.code === 'auth/user-not-found') {
+						resolve(true)
+					}
+				} else {
+					resolve(false)
+				}
 			} catch (error) {
-				reject(error.details)
+				reject(false)
 			}
 		})()
 	)
