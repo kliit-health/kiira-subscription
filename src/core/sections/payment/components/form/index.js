@@ -6,7 +6,6 @@ import {
 	CardNumberElement
 } from '@stripe/react-stripe-js'
 import { useFormik } from 'formik'
-import { Grid } from '@material-ui/core'
 import { string, object } from 'yup'
 import { Button } from 'src/components'
 import { cleanPhoneNumber, getState } from 'src/helpers/functions'
@@ -38,57 +37,57 @@ export const Form = () => {
 
 	const { plan } = useContext(CoreContext)
 
-	const {
-		handleSubmit,
-		handleBlur,
-		handleChange,
-		errors,
-		touched,
-		values,
-		isValid,
-		dirty
-	} = useFormik({
-		onSubmit: async ({ phoneNumber, ...rest }) => {
-			const numberElement = elements.getElement(CardNumberElement)
-			dispatch(
-				createPaymentMethod({
-					numberElement,
-					stripe,
-					details: {
-						phoneNumber: cleanPhoneNumber(phoneNumber),
-						...rest
-					}
-				})
-			)
-		},
-		validationSchema: object({
-			email: string()
-				.email(intl.invalidEmailFormat)
-				.test('test-email-existence', intl.emailInUse, value =>
-					value ? verifyEmailAddress(value) : true
-				)
-				.required(intl.emailRequired),
-			phoneNumber: string()
-				.matches(phoneRegex, intl.invalidPhoneNumber)
-				.required(intl.phoneNumberRequired),
-			postalCode: string()
-				.matches(zipRegex, intl.invalidZipCode)
-				.required(intl.zipCodeRequired)
-				.test('test-availability', intl.planNotAvailable, value => {
-					if (!value) return true
+	const { handleSubmit, handleBlur, handleChange, errors, touched, values } =
+		useFormik({
+			onSubmit: async ({ phoneNumber, ...rest }) => {
+				const numberElement = elements.getElement(CardNumberElement)
 
-					const selectedState = getState(`${value}`)
-					return plan.states.some(state => state === selectedState.code)
-				})
-		}),
-		validateOnChange: true,
-		initialValues: {
-			displayName: '',
-			email: '',
-			phoneNumber: '',
-			postalCode: ''
-		}
-	})
+				dispatch(
+					createPaymentMethod({
+						numberElement,
+						stripe,
+						details: {
+							phoneNumber: cleanPhoneNumber(phoneNumber),
+							...rest
+						}
+					})
+				)
+			},
+			validationSchema: object({
+				displayName: string().required(intl.nameRequired),
+				email: string()
+					.email(intl.invalidEmailFormat)
+					.test('test-email-existence', intl.emailInUse, value =>
+						value ? verifyEmailAddress(value) : true
+					)
+					.required(intl.emailRequired),
+				phoneNumber: string()
+					.matches(phoneRegex, intl.invalidPhoneNumber)
+					.required(intl.phoneNumberRequired),
+				postalCode: string()
+					.matches(zipRegex, intl.invalidZipCode)
+					.test('test-availability', intl.planNotAvailable, value => {
+						if (!value) return true
+
+						const selectedState = getState(`${value}`)
+
+						console.log(selectedState, value)
+
+						if (selectedState) {
+							return plan.states.some(state => state === selectedState.code)
+						}
+					})
+					.required(intl.zipCodeRequired)
+			}),
+			validateOnChange: false,
+			validateOnBlur: false,
+			initialValues: {
+				displayName: '',
+				email: '',
+				phoneNumber: '',
+				postalCode: ''
+			}
+		})
 
 	useEffect(() => {
 		if (paymentMethod) {
@@ -138,9 +137,8 @@ export const Form = () => {
 				<a className={styles.link} href="https://www.kiira.io/terms-conditions">
 					{intl.terms}
 				</a>
-				.
 			</p>
-			<Button disabled={!(isValid && dirty)} type="submit" color={colors.blue}>
+			<Button disabled={loading} type="submit" color={colors.blue}>
 				{loading ? intl.validating : intl.submit}
 			</Button>
 		</form>

@@ -48,5 +48,5 @@ export default {
 	completed:
 		'Thanks for joining Kiira! Please check your email for further instructions.',
 	consent: 'By submitting this form, you consent to our ',
-	terms: 'Terms and Conditions'
+	terms: 'Terms and Conditions.'
 }

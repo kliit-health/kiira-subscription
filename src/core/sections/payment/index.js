@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { makeStyles } from '@material-ui/core'
 import { Close } from '@material-ui/icons'
 import { Modal } from 'react-responsive-modal'
 import { Form, Summary, Error, Completed } from './components'
@@ -11,15 +10,6 @@ import { CoreContext } from 'src/core'
 import intl from 'src/i18n'
 import 'react-responsive-modal/styles.css'
 import './styles.scss'
-
-const useStyles = makeStyles(theme => ({
-	modal: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		position: 'relative'
-	}
-}))
 
 export const Payment = () => {
 	const { plan, selectPlan } = useContext(CoreContext)
@@ -96,16 +86,4 @@ const state = {
 	error: 'error',
 	initial: 'initial',
 	success: 'success'
-}
-
-const modalStyles = {
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		padding: 0,
-		transform: 'translate(-50%, -50%)'
-	}
 }
